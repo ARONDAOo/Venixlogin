@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ログインフォーム</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    overflow: hidden; /* 背景のキャンバスを設定したので、オーバーフローは非表示にします */
+  }
+
+  #login-container {
+    width: 300px;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="submit"] {
+    display: block;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  input[type="submit"] {
+    background-color: #555;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+  input[type="submit"]:hover {
+    background-color: #333;
+  }
+
+  canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
+</head>
+<body>
+<canvas id="bgCanvas"></canvas>
+<div id="login-container">
+  <input type="text" placeholder="ユーザー名">
+  <input type="password" placeholder="パスワード">
+  <input type="submit" value="Login" onclick="checkLogin()">
+</div>
+
+<script>
+  // 簡易的なクライアントサイドのチェック (注意: 本番環境ではセキュアではありません!)
+  function checkLogin() {
+    var username = document.querySelector('#login-container input[type=text]').value;
+    var password = document.querySelector('#login-container input[type=password]').value;
+
+    if (username === 'Kanata' && password === 'VenixadmiN') {
+      // 認証に成功したら特定のサイトにリダイレクト
+      window.location.href = 'https://example.com';
+      // 実際にはサーバーサイドでの検証が必要です。
+    } else {
+      alert('ユーザー名またはパスワードが間違っています。');
+    }
+  }
+</script>
+</body>
+</html>
